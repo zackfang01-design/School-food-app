@@ -1,177 +1,133 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="廚餘紀錄">
-<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
-<link rel="apple-touch-icon" sizes="167x167" href="icons/icon-167.png">
-<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
-
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0f7f83">
-<link rel="manifest" href="manifest.json">
-<title>廚餘紀錄</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f766e">
+<title>學校115廚餘總重紀錄表</title>
 <style>
-:root{--p:#0f7f83;--p2:#dff3f1;--bg:#f4f7f7;--card:#fff;--text:#183535;--muted:#789090;--line:#e2ebeb;--danger:#d65b5b}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC",sans-serif;color:var(--text);padding-bottom:78px}
-.top{background:linear-gradient(135deg,#0d777c,#20a09b);color:white;padding:calc(16px + env(safe-area-inset-top)) 18px 20px;border-radius:0 0 25px 25px;box-shadow:0 5px 18px #08706d33}
-.topline{display:flex;justify-content:space-between;align-items:center}.top h1{font-size:22px;margin:0;font-weight:800}.top p{margin:6px 0 0;font-size:13px;opacity:.9}
-.icon{width:38px;height:38px;border-radius:12px;border:1px solid #ffffff55;background:#ffffff18;color:#fff;font-size:20px}
-main{max-width:720px;margin:auto;padding:14px 14px 0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;margin-bottom:13px;box-shadow:0 4px 15px #18353508}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.section-title h2{font-size:16px;margin:0}.small{font-size:12px;color:var(--muted)}
-.datebar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}.datebox{background:#f2f8f8;border-radius:14px;padding:11px 13px}.datebox b{font-size:16px;display:block}.datebox span{font-size:12px;color:var(--muted)}
-input{font:inherit}input[type=date]{border:0;background:transparent;color:var(--text);font-size:16px;font-weight:700;width:100%}
-.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:800;cursor:pointer}.primary{background:var(--p);color:#fff}.soft{background:var(--p2);color:var(--p)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f7faf9;border-radius:14px;padding:12px 7px;text-align:center}.stat b{font-size:20px;color:var(--p);display:block}.stat span{font-size:11px;color:var(--muted)}
-.progress{height:8px;background:#e8eeee;border-radius:10px;overflow:hidden;margin-top:10px}.progress i{display:block;height:100%;width:0;background:var(--p);border-radius:10px}
-.rows{display:grid;gap:8px}.row{display:grid;grid-template-columns:54px 1fr 65px 80px;gap:6px;align-items:center;border:1px solid var(--line);border-radius:13px;padding:7px;background:#fff}.group{font-weight:800;text-align:center}.row input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px;text-align:right;background:#fbfdfd}.ded{font-size:11px;color:var(--muted);text-align:center}.net{text-align:right;font-weight:800;color:var(--p)}.warn{color:var(--danger)}
-.actions{display:flex;gap:8px;margin-top:12px}.actions button{flex:1}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:68px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:center;gap:5px;padding:7px max(8px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom));z-index:20}.nav{border:0;background:none;color:#8a9999;font-size:11px;flex:1;max-width:130px}.nav.active{color:var(--p);font-weight:800}.nav .ico{display:block;font-size:21px;line-height:25px}.page{display:none}.page.active{display:block}
-.history-item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line)}.history-item:last-child{border:0}.history-item b{display:block}.history-item span{font-size:12px;color:var(--muted)}
-.empty{text-align:center;padding:35px 10px;color:var(--muted)}
-@media(max-width:430px){.row{grid-template-columns:45px 1fr 55px 67px}.row input{padding:8px 5px}.ded{font-size:10px}.net{font-size:13px}.top h1{font-size:20px}}
+:root{--main:#0f766e;--light:#ecfeff;--line:#cbd5e1;--text:#173042;--danger:#b91c1c}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC",sans-serif;background:#f3f7f7;color:var(--text)}
+header{background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff;padding:calc(18px + env(safe-area-inset-top)) 16px 18px;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0002}
+h1{font-size:20px;margin:0 0 12px;font-weight:800}.sub{font-size:13px;opacity:.9}
+.wrap{max-width:900px;margin:auto;padding:14px 12px 40px}
+.card{background:#fff;border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 2px 12px #0000000d}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}.controls label{font-size:12px;color:#64748b}
+input,select,button{font:inherit} input,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:10px;background:#fff}
+.daytabs{display:flex;gap:7px;overflow:auto;padding-bottom:2px}.daytabs button{border:0;background:#e2e8f0;color:#334155;border-radius:10px;padding:10px 14px;white-space:nowrap;font-weight:700}.daytabs button.active{background:var(--main);color:#fff}
+.summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:#f0fdfa;border-radius:12px;padding:10px;text-align:center}.stat b{display:block;font-size:19px;color:var(--main)}.stat span{font-size:12px;color:#64748b}
+.entry{display:grid;grid-template-columns:70px 1fr 92px 42px;gap:7px;align-items:center;margin-bottom:8px}.entry .group{background:#f8fafc;padding:11px 7px;border-radius:10px;text-align:center;font-weight:700}.entry button{height:42px;border:0;border-radius:10px;background:#fee2e2;color:var(--danger);font-size:20px}
+.add{width:100%;border:2px dashed #99f6e4;background:#f0fdfa;color:#0f766e;border-radius:11px;padding:11px;font-weight:800}
+.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-weight:800}.muted{font-size:12px;color:#64748b}
+.totalbox{display:grid;grid-template-columns:1fr 1fr;gap:8px}.totalbox div{padding:12px;background:#f8fafc;border-radius:10px}.totalbox b{font-size:18px}
+.actions{display:flex;gap:8px}.actions button{flex:1;padding:12px;border:0;border-radius:11px;font-weight:800}.save{background:var(--main);color:#fff}.clear{background:#e2e8f0;color:#334155}
+@media(max-width:500px){.entry{grid-template-columns:62px 1fr 88px 40px}.summary{grid-template-columns:1fr 1fr}.summary .stat:last-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
-<header class="top">
- <div class="topline"><div><h1>廚餘總重紀錄</h1><p>學校 115 年 · 每日快速登錄</p></div><button class="icon" onclick="saveDay()">✓</button></div>
+<header>
+  <h1>學校115廚餘總重紀錄表</h1>
+  <div class="sub">手機版｜自動扣重、加總、計算淨重</div>
 </header>
-
-<main>
-<section id="page-record" class="page active">
- <div class="card">
-  <div class="section-title"><h2>📅 今日紀錄</h2><span class="small" id="weekdayLabel"></span></div>
-  <div class="datebar">
-   <div class="datebox"><input id="date" type="date"><span>選擇日期</span></div>
-   <button class="btn soft" onclick="today()">今天</button>
+<div class="wrap">
+  <div class="card controls">
+    <div><label>月份</label><input id="month" type="number" min="1" max="12" placeholder="月"></div>
+    <div><label>日期</label><input id="date" type="number" min="1" max="31" placeholder="日"></div>
   </div>
- </div>
 
- <div class="card">
-  <div class="section-title"><h2>今日統計</h2><span class="small" id="filled">0 / 16 組</span></div>
-  <div class="stats">
-   <div class="stat"><b id="gross">0.0</b><span>加總 kg</span></div>
-   <div class="stat"><b id="deduct">0.0</b><span>扣重 kg</span></div>
-   <div class="stat"><b id="net">0.0</b><span>淨重 kg</span></div>
+  <div class="card">
+    <div class="daytabs" id="tabs"></div>
   </div>
-  <div class="progress"><i id="bar"></i></div>
- </div>
 
- <div class="card">
-  <div class="section-title"><h2>📝 各組重量</h2><span class="small">單位：公斤</span></div>
-  <div class="rows" id="rows"></div>
-  <div class="actions">
-   <button class="btn soft" onclick="clearDay()">清除</button>
-   <button class="btn primary" onclick="saveDay()">儲存今天</button>
+  <div class="card">
+    <div class="section-title"><span id="dayTitle">星期一</span><span class="muted">每筆輸入「組」與「重量」</span></div>
+    <div id="entries"></div>
+    <button class="add" onclick="addEntry()">＋ 新增一筆</button>
   </div>
- </div>
-</section>
 
-<section id="page-history" class="page">
- <div class="card">
-  <div class="section-title"><h2>📚 歷史紀錄</h2><button class="btn soft" onclick="exportCSV()">匯出 CSV</button></div>
-  <div id="history"></div>
- </div>
-</section>
+  <div class="card">
+    <div class="section-title"><span>本日統計</span><span class="muted">單位：公斤</span></div>
+    <div class="summary">
+      <div class="stat"><b id="gross">0.0</b><span>重量加總</span></div>
+      <div class="stat"><b id="deduct">0.0</b><span>扣重加總</span></div>
+      <div class="stat"><b id="net">0.0</b><span>廚餘淨重</span></div>
+    </div>
+  </div>
 
-<section id="page-settings" class="page">
- <div class="card">
-  <div class="section-title"><h2>⚙️ 設定</h2></div>
-  <p class="small">扣重數值已依照你上傳的原始表格建立，共 1～60 組。</p>
-  <button class="btn soft" onclick="showDeductions()">查看扣重對照表</button>
-  <div id="deductionList" style="margin-top:12px"></div>
- </div>
- <div class="card">
-  <h2 style="font-size:16px">資料備份</h2>
-  <p class="small">資料儲存在本機瀏覽器。建議定期匯出 CSV 保存。</p>
-  <button class="btn primary" onclick="exportCSV()">匯出全部資料</button>
- </div>
-</section>
-</main>
+  <div class="card">
+    <div class="section-title"><span>週一～週五總計</span><span class="muted">自動計算</span></div>
+    <div class="totalbox">
+      <div>重量加總<br><b id="weekGross">0.0 kg</b></div>
+      <div>扣重加總<br><b id="weekDeduct">0.0 kg</b></div>
+      <div>廚餘淨重<br><b id="weekNet">0.0 kg</b></div>
+      <div>有紀錄天數<br><b id="daysCount">0 天</b></div>
+    </div>
+  </div>
 
-<nav class="bottom">
- <button class="nav active" onclick="showPage('record',this)"><span class="ico">📝</span>今日紀錄</button>
- <button class="nav" onclick="showPage('history',this)"><span class="ico">📚</span>歷史紀錄</button>
- <button class="nav" onclick="showPage('settings',this)"><span class="ico">⚙️</span>設定</button>
-</nav>
+  <div class="card actions">
+    <button class="save" onclick="saveData()">💾 儲存</button>
+    <button class="clear" onclick="clearAll()">🗑️ 清除全部</button>
+  </div>
+</div>
 
 <script>
-const deductions=[2.6, 5.2, 7.8, 10.4, 13.0, 15.6, 18.2, 20.8, 23.4, 26.0, 28.6, 31.2, 33.8, 36.4, 39.0, 41.6, 44.2, 46.8, 49.4, 52.0, 54.6, 57.2, 59.8, 62.4, 65.0, 67.6, 70.2, 72.8, 75.4, 78.0, 80.6, 83.2, 85.8, 88.4, 91.0, 93.6, 96.2, 98.8, 101.4, 104.0, 106.6, 109.2, 111.8, 114.4, 117.0, 119.6, 122.2, 124.8, 127.4, 130.0, 132.6, 135.2, 137.8, 140.4, 143.0, 145.6, 148.2, 150.8, 153.4, 156.0];
-const dayNames=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
-const key=d=>'foodWaste_'+d;
-const $=x=>document.getElementById(x);
-function iso(d=new Date()){return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
-function fmtDate(s){return s.replaceAll('-','/')}
-function buildRows(){
- let h='';
- for(let i=1;i<=16;i++) h+=`<div class="row">
-  <div class="group">${i}組</div>
-  <input id="w${i}" type="number" min="0" step="0.1" inputmode="decimal" placeholder="輸入">
-  <div class="ded">扣 ${deductions[i-1].toFixed(1)}</div>
-  <div id="n${i}" class="net">0.0 kg</div>
- </div>`;
- $('rows').innerHTML=h;
- for(let i=1;i<=16;i++) $('w'+i).addEventListener('input',recalc);
+const days=["星期一","星期二","星期三","星期四","星期五"];
+let current=0;
+let data=JSON.parse(localStorage.getItem("foodWaste115")||"null") || days.map(()=>[]);
+const month=localStorage.getItem("foodMonth")||""; const date=localStorage.getItem("foodDate")||"";
+document.getElementById("month").value=month; document.getElementById("date").value=date;
+document.getElementById("month").addEventListener("input",e=>localStorage.setItem("foodMonth",e.target.value));
+document.getElementById("date").addEventListener("input",e=>localStorage.setItem("foodDate",e.target.value));
+
+function renderTabs(){
+  document.getElementById("tabs").innerHTML=days.map((d,i)=>`<button class="${i===current?'active':''}" onclick="switchDay(${i})">${d}${data[i].length?' · '+data[i].length+'筆':''}</button>`).join("");
 }
-function recalc(){
- let gross=0,deduct=0,net=0,count=0;
- for(let i=1;i<=16;i++){
-  let w=parseFloat($('w'+i).value)||0; if(w>0) count++;
-  let d=w>0?deductions[i-1]:0,n=Math.max(0,w-d);
-  gross+=w;deduct+=d;net+=n;
-  $('n'+i).textContent=n.toFixed(1)+' kg';
-  $('n'+i).className='net'+(w>0&&w<deductions[i-1]?' warn':'');
- }
- $('gross').textContent=gross.toFixed(1);$('deduct').textContent=deduct.toFixed(1);$('net').textContent=net.toFixed(1);
- $('filled').textContent=count+' / 16 組';$('bar').style.width=(count/16*100)+'%';
+function switchDay(i){current=i;renderTabs();render();}
+function addEntry(){data[current].push({group:"",weight:""});saveData(false);render();}
+function removeEntry(i){data[current].splice(i,1);saveData(false);render();}
+function update(i,key,val){data[current][i][key]=val;saveData(false);renderTotals();}
+function deduction(group){let n=parseInt(group,10); return Number.isFinite(n)&&n>=1&&n<=60?n*2.6:0;}
+function render(){
+ document.getElementById("dayTitle").textContent=days[current];
+ document.getElementById("entries").innerHTML=data[current].map((e,i)=>`
+ <div class="entry">
+   <div class="group">第 ${i+1} 筆</div>
+   <select onchange="update(${i},'group',this.value)">
+     <option value="">選組別</option>
+     ${Array.from({length:60},(_,k)=>`<option value="${k+1}" ${String(e.group)===String(k+1)?'selected':''}>${k+1}組（扣${(k+1)*2.6}）</option>`).join("")}
+   </select>
+   <input type="number" inputmode="decimal" step="0.1" min="0" placeholder="重量 kg" value="${e.weight}" oninput="update(${i},'weight',this.value)">
+   <button onclick="removeEntry(${i})" aria-label="刪除">×</button>
+ </div>`).join("");
+ renderTotals(); renderWeek();
 }
-function loadDay(){
- let d=$('date').value,x=JSON.parse(localStorage.getItem(key(d))||'null');
- for(let i=1;i<=16;i++) $('w'+i).value=x?.weights?.[i-1]??'';
- const wd=new Date(d+'T12:00:00').getDay();$('weekdayLabel').textContent=dayNames[wd];
- recalc();
+function calcDay(i){
+ let gross=0,deduct=0;
+ data[i].forEach(e=>{gross+=parseFloat(e.weight)||0;deduct+=deduction(e.group)});
+ return {gross,deduct,net:gross-deduct};
 }
-function saveDay(){
- let d=$('date').value,weights=Array.from({length:16},(_,i)=>parseFloat($('w'+(i+1)).value)||0);
- localStorage.setItem(key(d),JSON.stringify({date:d,weekday:new Date(d+'T12:00:00').getDay(),weights}));
- toast('已儲存 '+fmtDate(d));
+function renderTotals(){
+ const x=calcDay(current);
+ document.getElementById("gross").textContent=x.gross.toFixed(1);
+ document.getElementById("deduct").textContent=x.deduct.toFixed(1);
+ document.getElementById("net").textContent=x.net.toFixed(1);
 }
-function clearDay(){
- if(!confirm('確定要清除這一天的資料嗎？'))return;
- localStorage.removeItem(key($('date').value));for(let i=1;i<=16;i++)$('w'+i).value='';recalc();toast('已清除');
+function renderWeek(){
+ let g=0,d=0,n=0,c=0;
+ data.forEach((_,i)=>{let x=calcDay(i);g+=x.gross;d+=x.deduct;n+=x.net;if(data[i].length)c++});
+ document.getElementById("weekGross").textContent=g.toFixed(1)+" kg";
+ document.getElementById("weekDeduct").textContent=d.toFixed(1)+" kg";
+ document.getElementById("weekNet").textContent=n.toFixed(1)+" kg";
+ document.getElementById("daysCount").textContent=c+" 天";
 }
-function today(){$('date').value=iso();loadDay()}
-$('date').addEventListener('change',loadDay);
-function showPage(name,el){
- document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
- $('page-'+name).classList.add('active');
- document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));el.classList.add('active');
- if(name==='history')renderHistory(); if(name==='settings')showDeductions();
+function saveData(show=true){
+ localStorage.setItem("foodWaste115",JSON.stringify(data));
+ if(show){localStorage.setItem("foodMonth",document.getElementById("month").value);localStorage.setItem("foodDate",document.getElementById("date").value);alert("已儲存！資料會保留在這支手機的瀏覽器中。");}
 }
-function renderHistory(){
- let arr=Object.keys(localStorage).filter(k=>k.startsWith('foodWaste_')).map(k=>JSON.parse(localStorage.getItem(k))).sort((a,b)=>b.date.localeCompare(a.date));
- if(!arr.length){$('history').innerHTML='<div class="empty">還沒有歷史資料</div>';return}
- $('history').innerHTML=arr.map(x=>{
-  let net=x.weights.reduce((s,w,i)=>s+(w?Math.max(0,w-deductions[i]):0),0);
-  let count=x.weights.filter(w=>w>0).length;
-  return `<div class="history-item"><div><b>${fmtDate(x.date)}</b><span>${dayNames[x.weekday]} · ${count} 組</span></div><b>${net.toFixed(1)} kg</b></div>`
- }).join('');
+function clearAll(){
+ if(confirm("確定要清除全部紀錄嗎？")){data=days.map(()=>[]);saveData(false);render();}
 }
-function showDeductions(){
- $('deductionList').innerHTML=deductions.map((v,i)=>`<span style="display:inline-block;background:#f3f8f8;border:1px solid #e2ebeb;border-radius:8px;padding:6px 8px;margin:3px;font-size:12px">${i+1}組 ${v.toFixed(1)}</span>`).join('');
-}
-function exportCSV(){
- let csv='日期,星期,組別,重量(kg),扣重(kg),廚餘淨重(kg)\\n';
- Object.keys(localStorage).filter(k=>k.startsWith('foodWaste_')).sort().forEach(k=>{
-  let x=JSON.parse(localStorage.getItem(k));x.weights.forEach((w,i)=>{let d=w?deductions[i]:0,n=w?Math.max(0,w-d):0;csv+=`${x.date},${dayNames[x.weekday]},${i+1}組,${w.toFixed(1)},${d.toFixed(1)},${n.toFixed(1)}\\n`})
- });
- let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='廚餘總重紀錄.csv';a.click();
-}
-function toast(t){let e=document.createElement('div');e.textContent=t;e.style='position:fixed;left:50%;bottom:85px;transform:translateX(-50%);background:#183535;color:white;padding:10px 16px;border-radius:12px;z-index:99;font-size:13px';document.body.appendChild(e);setTimeout(()=>e.remove(),1600)}
-buildRows();$('date').value=iso();loadDay();
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+renderTabs();render();
 </script>
 </body>
 </html>
